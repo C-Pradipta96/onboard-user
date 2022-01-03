@@ -5,12 +5,12 @@ on :
     inputs:
       TOKEN :
         description : 'ADMIN TOKEN'
-          required : true
+        required : true
 
 env: 
   TOKEN : ${{ github.event.inputs.TOKEN }}
   
- jobs:
+jobs:
   list_non_std:
     runs-on : ubuntu-latest
    
