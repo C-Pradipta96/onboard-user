@@ -1,0 +1,26 @@
+name : list-non-standard-profile
+
+on : 
+  workflow_dispatch:
+    inputs:
+      TOKEN :
+        description : 'ADMIN TOKEN'
+          required : true
+
+env: 
+  TOKEN : ${{ github.event.inputs.TOKEN }}
+  
+ jobs:
+  list_non_std:
+    runs-on : ubuntu-latest
+   
+    steps:
+      - name : Checkout Code
+        uses: actions/checkout@v2
+        
+      - name: Fetch API
+        run : |
+            curl --location --request GET 'https://api.github.com/orgs/internal-test-organization/members' \
+            --header 'Authorization: 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' \
+            --header 'Accept: application/vnd.github.v3+json'
+    
